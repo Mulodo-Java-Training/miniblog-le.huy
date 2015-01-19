@@ -108,6 +108,55 @@ CREATE TABLE IF NOT EXISTS `miniblog`.`token` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+USE `miniblog`;
+
+DELIMITER $$
+
+USE `miniblog`$$
+DROP TRIGGER IF EXISTS `miniblog`.`users_BEFORE_UPDATE` $$
+USE `miniblog`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `miniblog`.`users_BEFORE_UPDATE` BEFORE UPDATE ON `users` FOR EACH ROW BEGIN
+    IF OLD.password != NEW.password THEN
+     SET NEW.modified_at = NOW();
+    END IF;
+    IF OLD.lastname != NEW.lastname THEN
+     SET NEW.modified_at = NOW();
+    END IF;
+    IF OLD.firstname != NEW.firstname THEN
+     SET NEW.modified_at = NOW();
+    END IF;
+END;$$
+
+
+USE `miniblog`$$
+DROP TRIGGER IF EXISTS `miniblog`.`posts_BEFORE_UPDATE` $$
+USE `miniblog`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `miniblog`.`posts_BEFORE_UPDATE` BEFORE UPDATE ON `posts` FOR EACH ROW BEGIN
+    IF OLD.content != NEW.content THEN
+     SET NEW.modified_at = NOW();
+    END IF;
+    IF OLD.title != NEW.title THEN
+     SET NEW.modified_at = NOW();
+    END IF;
+    IF OLD.status != NEW.status THEN
+     SET NEW.modified_at = NOW();
+    END IF;
+END;
+    $$
+
+
+USE `miniblog`$$
+DROP TRIGGER IF EXISTS `miniblog`.`comments_BEFORE_UPDATE` $$
+USE `miniblog`$$
+CREATE DEFINER = CURRENT_USER TRIGGER `miniblog`.`comments_BEFORE_UPDATE` BEFORE UPDATE ON `comments` FOR EACH ROW  BEGIN
+    IF OLD.comment != NEW.comment THEN
+     SET NEW.modified_at = NOW();
+    END IF;
+END;
+    $$
+
+
+DELIMITER ;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
