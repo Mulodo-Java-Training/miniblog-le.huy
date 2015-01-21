@@ -68,10 +68,10 @@ DROP TABLE IF EXISTS `miniblog`.`comments` ;
 CREATE TABLE IF NOT EXISTS `miniblog`.`comments` (
   `id` INT(20) UNSIGNED NOT NULL,
   `comment` VARCHAR(254) CHARACTER SET 'latin5' COLLATE 'latin5_bin' NOT NULL,
-  `posts_id` INT(20) UNSIGNED NOT NULL,
-  `users_id` INT(16) UNSIGNED NOT NULL,
   `create_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `modified_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `posts_id` INT(20) UNSIGNED NOT NULL,
+  `users_id` INT(16) UNSIGNED NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_comments_posts1_idx` (`posts_id` ASC),
   INDEX `fk_comments_users1_idx` (`users_id` ASC),
@@ -96,10 +96,11 @@ DROP TABLE IF EXISTS `miniblog`.`token` ;
 
 CREATE TABLE IF NOT EXISTS `miniblog`.`token` (
   `access_token` VARCHAR(100) NOT NULL,
-  `create_at` TIMESTAMP(0) NULL,
-  `expired` TIMESTAMP(0) NULL,
+  `create_at` TIMESTAMP(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `expired` TIMESTAMP(0) NULL DEFAULT CURRENT_TIMESTAMP,
   `users_id` INT(16) UNSIGNED NOT NULL,
-  PRIMARY KEY (`access_token`, `users_id`),
+  `id` INT(16) NOT NULL,
+  PRIMARY KEY (`id`),
   INDEX `fk_token_users1_idx` (`users_id` ASC),
   CONSTRAINT `fk_token_users1`
     FOREIGN KEY (`users_id`)
