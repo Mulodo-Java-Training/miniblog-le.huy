@@ -4,56 +4,77 @@ import java.util.List;
 
 import mini.dao.postDAO;
 import mini.model.posts;
-import mini.model.users;
+
+import org.hibernate.Criteria;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class postDAOimp implements postDAO{
+	
+	@Autowired
+	private SessionFactory session;
+	
+	public SessionFactory getSession() {
+		return session;
+	}
 
 	@Override
 	public void save(posts post) {
-		// TODO Auto-generated method stub
-		
+		session.getCurrentSession().save(post);
 	}
 
 	@Override
 	public void persist(posts post) {
-		// TODO Auto-generated method stub
-		
+		session.getCurrentSession().persist(post);
 	}
 
 	@Override
 	public void update(posts post) {
-		// TODO Auto-generated method stub
-		
+		session.getCurrentSession().update(post);
 	}
 
 	@Override
 	public void saveorupdate(posts post) {
-		// TODO Auto-generated method stub
-		
+		session.getCurrentSession().saveOrUpdate(post);
 	}
 
 	@Override
 	public void delete(posts post) {
-		// TODO Auto-generated method stub
-		
+		session.getCurrentSession().delete(post);
 	}
 
 	@Override
-	public users get(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public posts get(int id) {
+		return (posts) session.getCurrentSession().get(posts.class, id);
 	}
 
 	@Override
-	public users load(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public posts load(int id) {
+		return (posts) session.getCurrentSession().load(posts.class, id);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<posts> get_all_posts_by_user_Id(int user_id) {
-		// TODO Auto-generated method stub
-		return null;
+		Criteria criteria = session.getCurrentSession().createCriteria(posts.class);
+		criteria.add(Restrictions.eq("user_id", user_id));
+		return criteria.list();
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<posts> get_all_posts() {
+		return session.getCurrentSession().createQuery("from posts").list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<posts> search_posts_by_create_at(int limit) {
+		return null;
+//		Criteria criteria = session.getCurrentSession().createCriteria(posts.class);
+//		criteria.add(Restrictions.eq("user_id", user_id));
+//		criteria.setProjection(Projections.max("InvoiceDate" ))
+//		return criteria.list();
+	}
 }

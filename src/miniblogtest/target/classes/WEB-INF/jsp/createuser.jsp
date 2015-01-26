@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>Students Data</h1>
-<form:form action="/createuser" method="POST" commandName="userreturn">
+<form:form action="/usercontroller/signup" method="POST" commandName="userreturn">
 	<table>
 		<tr>
 			<td>username</td>

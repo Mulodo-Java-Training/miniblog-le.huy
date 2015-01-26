@@ -9,7 +9,7 @@ public interface userDAO {
 	public void persist(users user);
 	public void update(users user);
 	public void saveorupdate(users user);
-	public void delete(users user);
+	//public void delete(users user);
 	
 	public users get(int id);
 	public users load(int id);

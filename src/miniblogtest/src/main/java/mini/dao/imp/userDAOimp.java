@@ -16,6 +16,10 @@ public class userDAOimp implements userDAO{
 	
 	@Autowired
 	private SessionFactory session;
+	
+	public SessionFactory getSession() {
+		return session;
+	}
 
 	@Override
 	public void save(users user) {
@@ -37,10 +41,10 @@ public class userDAOimp implements userDAO{
 		session.getCurrentSession().saveOrUpdate(user);
 	}
 
-	@Override
-	public void delete(users user) {
-		session.getCurrentSession().delete(user);
-	}
+//	@Override
+//	public void delete(users user) {
+//		session.getCurrentSession().delete(user);
+//	}
 
 	@Override
 	public users get(int id) {
@@ -55,26 +59,26 @@ public class userDAOimp implements userDAO{
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<users> get_all_user() {
-		return session.getCurrentSession().createQuery("from Student").list();
+		return session.getCurrentSession().createQuery("from users").list();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public users get_by_username(String username) {
 		Criteria criteria = session.getCurrentSession().createCriteria(users.class);
-		criteria.add(Restrictions.like("username", username));
+		criteria.add(Restrictions.eq("username", username));
 		List<users> result = criteria.list();
-		if(result.size()>1 || result.size()==0){ return null;}
+		if(result.size()!=1){ return null;}
 		else{return result.get(0);}
 	}
-
+	
+	@SuppressWarnings("unchecked")
 	@Override
 	public users get_by_email(String email) {
 		Criteria criteria = session.getCurrentSession().createCriteria(users.class);
-		criteria.add(Restrictions.like("email", email));
-		@SuppressWarnings("unchecked")
+		criteria.add(Restrictions.eq("email", email));
 		List<users> result = criteria.list();
-		if(result.size()>1 || result.size()==0){ return null;}
+		if(result.size()!=1){ return null;}
 		else{return result.get(0);}
 	}
 }

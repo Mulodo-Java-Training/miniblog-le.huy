@@ -3,7 +3,6 @@ package mini.dao;
 import java.util.List;
 
 import mini.model.posts;
-import mini.model.users;
 
 public interface postDAO {
 	public void save(posts post);
@@ -12,11 +11,13 @@ public interface postDAO {
 	public void saveorupdate(posts post);
 	public void delete(posts post);
 	
-	public users get(int id);
-	public users load(int id);
+	public posts get(int id);
+	public posts load(int id);
 	//custom function
+	public List<posts> get_all_posts();
 	public List<posts> get_all_posts_by_user_Id(int user_id);
+
+	public List<posts> search_posts_by_create_at(int limit);
 	/* not yet
-	public List<users> search_posts_by_title(String title);
 	*/
 }
