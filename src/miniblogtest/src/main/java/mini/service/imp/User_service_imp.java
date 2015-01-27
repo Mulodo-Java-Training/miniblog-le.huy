@@ -2,6 +2,7 @@ package mini.service.imp;
 
 import mini.dao.userDAO;
 import mini.model.users;
+import mini.resteasy.form.signupform;
 import mini.service.User_service;
 import mini.service.mysql_validation_value;
 
@@ -16,14 +17,16 @@ public class User_service_imp implements User_service{
 	private userDAO userdao;
 
 	@Override
-	public boolean Validate_user(users user) {
+	public boolean Validate_user(signupform user) {
 		if(
 			user.getUsername() !=null && 
-			user.getUsername().length() <= mysql_validation_value.users_username_MAX_LENGTH && 
+			user.getUsername().length() <= mysql_validation_value.users_username_MAX_LENGTH &&
+			user.getUsername().length() >= mysql_validation_value.users_username_MIN_LENGTH && 
 			user.getUsername().matches(mysql_validation_value.users_username_STRING_RANGE)&&
 			
 			user.getPassword() !=null &&
 			user.getPassword().length() <= mysql_validation_value.users_password_MAX_LENGTH &&
+			user.getPassword().length() >= mysql_validation_value.users_password_MIN_LENGTH &&
 			user.getPassword().matches(mysql_validation_value.users_password_STRING_RANGE) &&
 			
 			user.getFirstname() !=null &&
@@ -44,21 +47,51 @@ public class User_service_imp implements User_service{
 
 	@Transactional
 	public boolean Check_User_Exist(String username) {
-		if(userdao.get_by_username(username)!=null)
-			return true;
-		else{
-			return false;
-		}
-	}
-
-	@Transactional
-	public boolean Insert_user(users user) {
 		try{
-			userdao.save(user);
+			if(userdao.get_by_username(username)!=null)
+				return true;
+			else{
+				return false;
+			}
 		}catch(Exception e){
 			return false;
 		}
-		return true;
+	}
+	
+	@Transactional
+	public boolean Check_Email_Exist(String email) {
+		try{
+			if(userdao.get_by_email(email)!=null)
+				return true;
+			else{
+				return false;
+			}
+		}catch(Exception e){
+			return false;
+		}
+	}
+	
+	@Transactional
+	public users Insert_user(users user) {	
+		try{
+			userdao.save(user);
+			user = userdao.get_by_username(user.getUsername());
+			if(user!=null){return user;}
+			else{return null;}
+		}catch(Exception e){
+			return null;
+		}
+	}
+	
+	@Transactional
+	public users get_user_by_username(String username) {
+		users user;
+		try{
+			user = userdao.get_by_username(username);
+		}catch(Exception e){
+			return null;
+		}
+		return user;
 	}
 
 	@Transactional
