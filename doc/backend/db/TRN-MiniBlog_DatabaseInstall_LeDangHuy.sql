@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `miniblog`.`users` ;
 CREATE TABLE IF NOT EXISTS `miniblog`.`users` (
   `id` INT(16) UNSIGNED NOT NULL AUTO_INCREMENT,
   `username` VARCHAR(32) CHARACTER SET 'utf8' NOT NULL,
-  `password` VARCHAR(72) NOT NULL,
+  `password` VARCHAR(64) NOT NULL,
   `lastname` VARCHAR(32) NOT NULL,
   `firstname` VARCHAR(32) CHARACTER SET 'utf8' NOT NULL,
   `email` VARCHAR(254) NOT NULL,
@@ -95,7 +95,7 @@ DEFAULT CHARACTER SET = utf8;
 DROP TABLE IF EXISTS `miniblog`.`token` ;
 
 CREATE TABLE IF NOT EXISTS `miniblog`.`token` (
-  `access_token` VARCHAR(100) NOT NULL,
+  `access_token` VARCHAR(64) NOT NULL,
   `create_at` TIMESTAMP(0) NULL,
   `expired` TIMESTAMP(0) NULL,
   `users_id` INT(16) UNSIGNED NOT NULL,
