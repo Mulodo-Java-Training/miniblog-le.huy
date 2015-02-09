@@ -5,7 +5,7 @@ import java.util.List;
 import mini.model.posts;
 
 public interface postDAO {
-	public void save(posts post);
+	public int save(posts post);
 	public void persist(posts post);
 	public void update(posts post);
 	public void saveorupdate(posts post);

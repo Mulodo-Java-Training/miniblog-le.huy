@@ -73,7 +73,8 @@ public class Comment_controller {
 				return Response.status(System_value.errorcode_3005)
 						.entity(error_code_util.set_error_code(System_value.errorcode_3005))
 						.build();}
-    	if(!comment_service.Create_comment(data.set_comment_data(token.getUser(), post))){
+    	int comment_id=comment_service.Create_comment(data.set_comment_data(token.getUser(), post));
+    	if(comment_id==0){
 				return Response.status(System_value.errorcode_4001)
 						.entity(error_code_util.set_error_code(System_value.errorcode_4001))
 						.build();}
@@ -82,7 +83,7 @@ public class Comment_controller {
 				System_value.code_200, 
 				"comment create success", 
 				null, 
-				null
+				comment_id
 				)).build();
 		
 	}

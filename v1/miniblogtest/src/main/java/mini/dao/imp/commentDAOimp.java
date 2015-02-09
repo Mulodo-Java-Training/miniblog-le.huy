@@ -19,8 +19,8 @@ public class commentDAOimp implements commentDAO{
 	}
 
 	@Override
-	public void save(comments comment) {
-		session.getCurrentSession().save(comment);
+	public int save(comments comment) {
+		return (int) session.getCurrentSession().save(comment);
 	}
 
 	@Override

@@ -134,10 +134,20 @@ public class User_service_imp implements User_service{
 	public boolean Delete_user(String username) {
 		try{
 			users user = userdao.get_by_username(username);
-			userdao.delete(user);
+			if(user!=null){
+			userdao.delete(user);}
 			return true;
 		}catch(Exception e){
 			e.printStackTrace();
 			return false;}
+	}
+
+	@Transactional
+	public users Get_user_by_username(String username) {
+		try{
+			return userdao.get_by_username(username);
+		}catch(Exception e){
+			e.printStackTrace();
+			return null;}
 	}
 }

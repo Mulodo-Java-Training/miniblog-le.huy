@@ -19,8 +19,8 @@ public class postDAOimp implements postDAO{
 	}
 
 	@Override
-	public void save(posts post) {
-		session.getCurrentSession().save(post);
+	public int save(posts post) {
+		return (int) session.getCurrentSession().save(post);
 	}
 
 	@Override

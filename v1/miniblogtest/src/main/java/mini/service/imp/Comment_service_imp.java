@@ -17,11 +17,10 @@ public class Comment_service_imp implements Comment_service{
 	private commentDAO commentdao;
 
 	@Transactional
-	public boolean Create_comment(comments data) {
+	public int Create_comment(comments data) {
 		try{
-			commentdao.save(data);
-			return true;
-		}catch(Exception e){return false;}
+			return commentdao.save(data);
+		}catch(Exception e){return 0;}
 	}
 
 	@Transactional

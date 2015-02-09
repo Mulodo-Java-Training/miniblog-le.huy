@@ -6,7 +6,7 @@ import mini.model.comments;
 import mini.resource.form.Comment_form;
 
 public interface Comment_service {
-	public boolean Create_comment(comments data);
+	public int Create_comment(comments data);
 	public boolean Check_comment_own(int comment_id,int user_id);
 	public boolean Edit_comment(Comment_form data);
 	public boolean Delete_comment(Comment_form data);

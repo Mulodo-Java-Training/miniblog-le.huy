@@ -5,7 +5,7 @@ import java.util.List;
 import mini.model.comments;
 
 public interface commentDAO {
-	public void save(comments comment);
+	public int save(comments comment);
 	public void persist(comments comment);
 	public void update(comments comment);
 	public void saveorupdate(comments comment);

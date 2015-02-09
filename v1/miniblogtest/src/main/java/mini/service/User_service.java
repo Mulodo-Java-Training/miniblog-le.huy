@@ -13,7 +13,7 @@ public interface User_service {
 	public boolean Check_User_Exist(String username);
 	public boolean Check_Email_Exist(String email);
 
-	//public users Get_user_by_username(String username);
+	public users Get_user_by_username(String username);
 	public boolean Delete_user(String username);
 	
 	public boolean Insert_user(users user);	

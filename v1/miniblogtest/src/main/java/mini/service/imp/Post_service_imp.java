@@ -22,11 +22,10 @@ public class Post_service_imp implements Post_service{
 	private userDAO userdao;
 	
 	@Transactional
-	public boolean Create_post(posts data) {
+	public int Create_post(posts data) {
 		try{
-			postdao.save(data);
-			return true;
-		}catch(Exception e){return false;}
+			return postdao.save(data);
+		}catch(Exception e){return 0;}
 	}
 	
 	@Transactional

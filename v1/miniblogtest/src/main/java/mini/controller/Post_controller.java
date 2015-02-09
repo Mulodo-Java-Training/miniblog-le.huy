@@ -62,8 +62,8 @@ public class Post_controller {
     		return Response.status(System_value.errorcode_2008)
     				.entity(error_code_util.set_error_code(System_value.errorcode_2008))
     				.build();}
-    	
-		if(!post_service.Create_post(data.set_post_data(token.getUser()))){
+    	int post_id=post_service.Create_post(data.set_post_data(token.getUser()));
+		if(post_id==0){
 			return Response.status(System_value.errorcode_3001)
 					.entity(error_code_util.set_error_code(System_value.errorcode_3001))
 					.build();}
@@ -72,7 +72,7 @@ public class Post_controller {
 				System_value.code_200, 
 				"post create success", 
 				null, 
-				null
+				post_id
 				)).build();
 	}
 	
@@ -150,7 +150,7 @@ public class Post_controller {
 
 	@POST
 	@Path("delete")
-	@Consumes("application/x-www-form-urlencoded")
+	@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 	public Response Delete_Post(
 			@HeaderParam("access_token") String access_token,
 			@Form Post_form data){
