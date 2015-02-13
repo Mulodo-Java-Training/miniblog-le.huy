@@ -52,7 +52,6 @@ public class post_controller_unittest {
 			post_controller_unittest.token_key = key.get("access_token").toString();
 			
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			fail("Login_test fail2");
 		}
@@ -104,7 +103,6 @@ public class post_controller_unittest {
 			JSONObject array = new JSONObject(response.getEntity().toString());
 			post_controller_unittest.post_id =array.getInt("data");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			fail("aa_Create_post_test fail 2");
 		}

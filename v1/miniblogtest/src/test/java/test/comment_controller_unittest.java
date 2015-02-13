@@ -25,7 +25,7 @@ public class comment_controller_unittest {
 	static final String ROOT_URL = "http://localhost:8080/miniblogtest";
 	
 	static String token_key;
-	static int Post_id=24;
+	static int Post_id=1;
 	static int comment_id;
 	
 	@Before
@@ -88,7 +88,7 @@ public class comment_controller_unittest {
 		ClientResponse<String> response = null;
 		request.header("access_token",token_key);
 		request.body(MediaType.APPLICATION_FORM_URLENCODED,
-					"postid=1&"
+					"postid=10&"
 					+ "comment=hohoho%2C+nice+man");
 		try {
 			response = request.post(String.class);
@@ -139,7 +139,7 @@ public class comment_controller_unittest {
 		ClientResponse<String> response = null;
 		request.header("access_token",token_key);
 		request.body(MediaType.APPLICATION_FORM_URLENCODED,
-				"id=1&"
+				"id=2&"
 				+ "comment=hohoho%2C+nice+man");
 		try {
 			response = request.put(String.class);

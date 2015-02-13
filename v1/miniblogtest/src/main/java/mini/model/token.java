@@ -7,34 +7,40 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.ForeignKey;
 
 @Entity
+@Table(name="token")
 public class token {
+
 	@ManyToOne
-	//@JoinColumn(nullable = false)
+	@JoinColumn(nullable = false)
 	@ForeignKey(name="fk_token_users")
 	private users user;
-	
+
 	@Id
 	@Column(columnDefinition = "INT(16) UNSIGNED")
 	@GeneratedValue(strategy=GenerationType.AUTO) //for autonumber
 	private int id;
-	
+
 	@Column(columnDefinition = "VARCHAR(64)",nullable=false,unique=true)
 	private String access_token;
-	
+
 	@Column(columnDefinition = "TIMESTAMP(0) default CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date create_at;
-	
+
 	@Column(columnDefinition = "TIMESTAMP(0) default CURRENT_TIMESTAMP")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date expired;
+
+	public token(){}
 
 	public users getUser() {
 		return user;

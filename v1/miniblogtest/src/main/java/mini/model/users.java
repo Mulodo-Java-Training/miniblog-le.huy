@@ -73,21 +73,21 @@ public class users {
 	private List<token> user_token;
 	
 	public users(){}
-
-	public users(int id, String username, String password, String lastname,
-			String firstname, String email, Date create_at, Date modified_at,
-			List<posts> user_posts) {
-		super();
-		this.id = id;
-		this.username = username;
-		this.password = password;
-		this.lastname = lastname;
-		this.firstname = firstname;
-		this.email = email;
-		this.create_at = create_at;
-		this.modified_at = modified_at;
-		this.user_posts = user_posts;
-	}
+//
+//	public UserModel(int id, String username, String password, String lastname,
+//			String firstname, String email, Date create_at, Date modified_at,
+//			List<PostModel> user_posts) {
+//		super();
+//		this.id = id;
+//		this.username = username;
+//		this.password = password;
+//		this.lastname = lastname;
+//		this.firstname = firstname;
+//		this.email = email;
+//		this.create_at = create_at;
+//		this.modified_at = modified_at;
+//		this.user_posts = user_posts;
+//	}
 
 
 	public int getId() {

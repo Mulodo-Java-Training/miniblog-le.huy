@@ -18,93 +18,90 @@ import org.hibernate.annotations.ForeignKey;
 @Entity
 @Table(name="comments")
 public class comments {
-	
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	@ForeignKey(name="fk_comments_users")
-	private users user;
-	
-	@ManyToOne
-	@JoinColumn(nullable = false)
-	@ForeignKey(name="fk_comments_posts")
-	private posts post;
-	
-	@Id
-	@Column(columnDefinition = "INT(20) UNSIGNED", nullable=false)
-	@GeneratedValue(strategy=GenerationType.AUTO) //for autonumber
-	private int id;
-	
-	@Column(columnDefinition = "VARCHAR(254)",nullable=false)
-	private String comment;
 
-	@Column(columnDefinition = "TIMESTAMP(0)")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date create_at;
-	
-	@Column(columnDefinition = "TIMESTAMP(0)")
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date modified_at;
-	
-	public comments(){}
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    @ForeignKey(name="fk_comments_users")
+    private users user;
 
-	public users getUser() {
-		return user;
-	}
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    @ForeignKey(name="fk_comments_posts")
+    private posts post;
 
-	public void setUser(users user) {
-		this.user = user;
-	}
+    @Id
+    @Column(columnDefinition = "INT(20) UNSIGNED", nullable=false)
+    @GeneratedValue(strategy=GenerationType.AUTO) //for autonumber
+    private int id;
 
-	public posts getPost() {
-		return post;
-	}
+    @Column(columnDefinition = "VARCHAR(254)",nullable=false)
+    private String comment;
 
-	public void setPost(posts post) {
-		this.post = post;
-	}
+    @Column(columnDefinition = "TIMESTAMP(0)")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date create_at;
 
-	public comments(int id, String comment, String posts_id, String users_id,
-			Date create_at, Date modified_at) {
-		super();
-		this.id = id;
-		this.comment = comment;
-		this.create_at = create_at;
-		this.modified_at = modified_at;
-	}
+    @Column(columnDefinition = "TIMESTAMP(0)")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date modified_at;
 
+    public comments(){}
+//
+//    public CommentModel(int id, String comment, String posts_id, String users_id,
+//            Date create_at, Date modified_at) {
+//        super();
+//        this.id = id;
+//        this.comment = comment;
+//        this.create_at = create_at;
+//        this.modified_at = modified_at;
+//    }
 
+    public users getUser() {
+        return user;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setUser(users user) {
+        this.user = user;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public posts getPost() {
+        return post;
+    }
 
-	public String getComment() {
-		return comment;
-	}
+    public void setPost(posts post) {
+        this.post = post;
+    }
 
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public Date getCreate_at() {
-		return create_at;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setCreate_at(Date create_at) {
-		this.create_at = create_at;
-	}
+    public String getComment() {
+        return comment;
+    }
 
-	public Date getModified_at() {
-		return modified_at;
-	}
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
 
-	public void setModified_at(Date modified_at) {
-		this.modified_at = modified_at;
-	}
-	
-	
+    public Date getCreate_at() {
+        return create_at;
+    }
+
+    public void setCreate_at(Date create_at) {
+        this.create_at = create_at;
+    }
+
+    public Date getModified_at() {
+        return modified_at;
+    }
+
+    public void setModified_at(Date modified_at) {
+        this.modified_at = modified_at;
+    }
+
 }
