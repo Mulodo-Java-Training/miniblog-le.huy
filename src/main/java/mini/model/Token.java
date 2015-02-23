@@ -22,34 +22,32 @@ import org.hibernate.annotations.ForeignKey;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Entity
-@Table ( name = "token" )
+@Table(name = "token")
 public class Token
 {
 
     @Id
-    @Column ( columnDefinition = "INT(16) UNSIGNED" )
-    @GeneratedValue ( strategy = GenerationType.AUTO )
+    @Column(columnDefinition = "INT(16) UNSIGNED")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     // for autonumber
     @JsonIgnore
     private int id;
 
-    @Column ( columnDefinition = "VARCHAR(64)" , nullable = false , unique = true )
+    @Column(columnDefinition = "VARCHAR(64)", nullable = false, unique = true)
     private String access_token;
 
-    @Column ( columnDefinition = "TIMESTAMP(0) default CURRENT_TIMESTAMP" )
-    @Temporal ( TemporalType.TIMESTAMP )
+    @Column(columnDefinition = "TIMESTAMP(0) default CURRENT_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonIgnore
     private Date create_at;
 
     @Transient
     private String Create_At;
 
-    @Column ( columnDefinition = "TIMESTAMP(0) default CURRENT_TIMESTAMP" )
-    @Temporal ( TemporalType.TIMESTAMP )
+    @Column(columnDefinition = "TIMESTAMP(0) default CURRENT_TIMESTAMP")
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonIgnore
     private Date expired;
 
@@ -57,16 +55,15 @@ public class Token
     private String ExpiredTime;
 
     @ManyToOne
-    @JoinColumn ( nullable = false )
-    @ForeignKey ( name = "fk_token_users" )
+    @JoinColumn(nullable = false)
+    @ForeignKey(name = "fk_token_users")
     @JsonIgnore
     private Users user;
 
     @Transient
     private int userId;
 
-    public Token()
-    {
+    public Token() {
 
     }
 

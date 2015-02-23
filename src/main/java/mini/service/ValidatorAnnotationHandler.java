@@ -12,23 +12,18 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Provider
 @Component
-public class ValidatorAnnotationHandler implements
-        ExceptionMapper<ResteasyViolationException>
+public class ValidatorAnnotationHandler implements ExceptionMapper<ResteasyViolationException>
 {
 
     @Override
     public Response toResponse(ResteasyViolationException exception)
     {
 
-        return Response
-                .status(SystemValue.ERRORCODE_1001)
-                .entity(ErrorCodeUtil
-                        .set_error_code(SystemValue.ERRORCODE_1001)).build();
+        return Response.status(SystemValue.ERRORCODE_1001)
+                .entity(ErrorCodeUtil.set_error_code(SystemValue.ERRORCODE_1001)).build();
     }
 
 }

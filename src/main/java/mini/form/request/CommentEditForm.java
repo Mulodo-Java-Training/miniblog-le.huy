@@ -7,20 +7,18 @@ import mini.systemvalue.SystemValue;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public class CommentEditForm
 {
 
-    @FormParam ( "id" )
+    @FormParam("id")
     public int id;
 
-    @FormParam ( "postid" )
+    @FormParam("postid")
     public int postid;
 
-    @Pattern ( regexp = SystemValue.COMMENT_STRING_RANGE )
-    @FormParam ( "comment" )
+    @Pattern(regexp = SystemValue.COMMENT_STRING_RANGE)
+    @FormParam("comment")
     public String comment;
 
 }

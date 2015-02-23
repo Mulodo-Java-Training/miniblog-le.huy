@@ -15,8 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith ( SpringJUnit4ClassRunner.class )
-@ContextConfiguration ( "file:src/test/java/TestControllerContext.xml" )
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/test/java/TestControllerContext.xml")
 public class PostControllerLayerTest
 {
 
@@ -38,8 +38,7 @@ public class PostControllerLayerTest
         PostCreateForm postcreateform = new PostCreateForm();
         postcreateform.title = "createpost3001";
         postcreateform.content = "createpost3001";
-        Response respone = post_controller.createPost("validtoken",
-                postcreateform);
+        Response respone = post_controller.createPost("validtoken", postcreateform);
         assertEquals(SystemValue.ERRORCODE_3001, respone.getStatus());
     }
 
@@ -50,8 +49,7 @@ public class PostControllerLayerTest
         PostCreateForm postcreateform = new PostCreateForm();
         postcreateform.title = "createpost200";
         postcreateform.content = "createpost200";
-        Response respone = post_controller.createPost("validtoken",
-                postcreateform);
+        Response respone = post_controller.createPost("validtoken", postcreateform);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -107,8 +105,7 @@ public class PostControllerLayerTest
 
         PostEditForm posteditform = new PostEditForm();
         posteditform.id = 1;
-        Response respone = post_controller.changePostStatus("validtoken",
-                posteditform);
+        Response respone = post_controller.changePostStatus("validtoken", posteditform);
         assertEquals(SystemValue.ERRORCODE_3005, respone.getStatus());
     }
 
@@ -118,8 +115,7 @@ public class PostControllerLayerTest
 
         PostEditForm posteditform = new PostEditForm();
         posteditform.id = 2;
-        Response respone = post_controller.changePostStatus("validtoken",
-                posteditform);
+        Response respone = post_controller.changePostStatus("validtoken", posteditform);
         assertEquals(SystemValue.ERRORCODE_3002, respone.getStatus());
     }
 
@@ -129,8 +125,7 @@ public class PostControllerLayerTest
 
         PostEditForm posteditform = new PostEditForm();
         posteditform.id = 3;
-        Response respone = post_controller.changePostStatus("validtoken",
-                posteditform);
+        Response respone = post_controller.changePostStatus("validtoken", posteditform);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -148,8 +143,7 @@ public class PostControllerLayerTest
 
         PostEditForm posteditform = new PostEditForm();
         posteditform.id = 1;
-        Response respone = post_controller.deletePost("validtoken",
-                posteditform);
+        Response respone = post_controller.deletePost("validtoken", posteditform);
         assertEquals(SystemValue.ERRORCODE_3005, respone.getStatus());
     }
 
@@ -159,8 +153,7 @@ public class PostControllerLayerTest
 
         PostEditForm posteditform = new PostEditForm();
         posteditform.id = 2;
-        Response respone = post_controller.deletePost("validtoken",
-                posteditform);
+        Response respone = post_controller.deletePost("validtoken", posteditform);
         assertEquals(SystemValue.ERRORCODE_3004, respone.getStatus());
     }
 
@@ -170,8 +163,7 @@ public class PostControllerLayerTest
 
         PostEditForm posteditform = new PostEditForm();
         posteditform.id = 3;
-        Response respone = post_controller.deletePost("validtoken",
-                posteditform);
+        Response respone = post_controller.deletePost("validtoken", posteditform);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -179,8 +171,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_1001()
     {
 
-        Response respone = post_controller.getPost("validtoken", "invalidmode",
-                0, 0, "s");
+        Response respone = post_controller.getPost("validtoken", "invalidmode", 0, 0, "s");
         assertEquals(SystemValue.ERRORCODE_1001, respone.getStatus());
     }
 
@@ -188,8 +179,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_2008()
     {
 
-        Response respone = post_controller.getPost("token2008", "all", 0, 0,
-                "s");
+        Response respone = post_controller.getPost("token2008", "all", 0, 0, "s");
         assertEquals(SystemValue.ERRORCODE_2008, respone.getStatus());
     }
 
@@ -197,8 +187,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_getall_200()
     {
 
-        Response respone = post_controller.getPost("validtoken", "all", 0, 0,
-                null);
+        Response respone = post_controller.getPost("validtoken", "all", 0, 0, null);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -206,8 +195,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_getcurrent_2009()
     {
 
-        Response respone = post_controller.getPost("getuser2009", "current", 0,
-                0, null);
+        Response respone = post_controller.getPost("getuser2009", "current", 0, 0, null);
         assertEquals(SystemValue.ERRORCODE_2009, respone.getStatus());
     }
 
@@ -215,8 +203,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_getcurrent_200()
     {
 
-        Response respone = post_controller.getPost("validtoken", "current", 0,
-                0, null);
+        Response respone = post_controller.getPost("validtoken", "current", 0, 0, null);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -224,8 +211,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_getuserid_2009()
     {
 
-        Response respone = post_controller.getPost("getuser2009", "userid", 0,
-                0, null);
+        Response respone = post_controller.getPost("getuser2009", "userid", 0, 0, null);
         assertEquals(SystemValue.ERRORCODE_2009, respone.getStatus());
     }
 
@@ -233,8 +219,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_getuserid_200()
     {
 
-        Response respone = post_controller.getPost("validtoken", "userid", 1,
-                0, null);
+        Response respone = post_controller.getPost("validtoken", "userid", 1, 0, null);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -242,8 +227,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_getpostid_3005()
     {
 
-        Response respone = post_controller.getPost("validtoken", "postid", 0,
-                0, null);
+        Response respone = post_controller.getPost("validtoken", "postid", 0, 0, null);
         assertEquals(SystemValue.ERRORCODE_3005, respone.getStatus());
     }
 
@@ -251,8 +235,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_getpostid_200()
     {
 
-        Response respone = post_controller.getPost("validtoken", "postid", 1,
-                0, null);
+        Response respone = post_controller.getPost("validtoken", "postid", 1, 0, null);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -260,8 +243,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_getposttop_200()
     {
 
-        Response respone = post_controller.getPost("validtoken", "top", 1, 0,
-                null);
+        Response respone = post_controller.getPost("validtoken", "top", 1, 0, null);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -269,8 +251,7 @@ public class PostControllerLayerTest
     public void PostController_getPost_getposttile_200()
     {
 
-        Response respone = post_controller.getPost("validtoken", "title", 1, 0,
-                null);
+        Response respone = post_controller.getPost("validtoken", "title", 1, 0, null);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 }

@@ -5,9 +5,7 @@ import mini.model.Users;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public interface TokenServiceInterface
 {
 

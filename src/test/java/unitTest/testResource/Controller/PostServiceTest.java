@@ -16,11 +16,9 @@ public class PostServiceTest implements PostServiceInterface
     public int createPost(Posts data)
     {
 
-        if (data.getTitle() == "createpost3001")
-        {
+        if (data.getTitle() == "createpost3001") {
             return 0;
-        } else
-        {
+        } else {
             return 1;
         }
     }
@@ -29,11 +27,9 @@ public class PostServiceTest implements PostServiceInterface
     public boolean checkPostOwn(int post_id, int user_id)
     {
 
-        if (post_id == 1)
-        {
+        if (post_id == 1) {
             return false;
-        } else
-        {
+        } else {
             return true;
         }
     }
@@ -42,11 +38,9 @@ public class PostServiceTest implements PostServiceInterface
     public boolean editPost(PostEditForm data)
     {
 
-        if (data.id == 2)
-        {
+        if (data.id == 2) {
             return false;
-        } else
-        {
+        } else {
             return true;
         }
     }
@@ -55,11 +49,9 @@ public class PostServiceTest implements PostServiceInterface
     public boolean editStatusPost(PostEditForm data)
     {
 
-        if (data.id == 2)
-        {
+        if (data.id == 2) {
             return false;
-        } else
-        {
+        } else {
             return true;
         }
     }
@@ -68,11 +60,9 @@ public class PostServiceTest implements PostServiceInterface
     public boolean deletePost(PostEditForm data)
     {
 
-        if (data.id == 2)
-        {
+        if (data.id == 2) {
             return false;
-        } else
-        {
+        } else {
             return true;
         }
     }
@@ -97,11 +87,9 @@ public class PostServiceTest implements PostServiceInterface
     public Posts getPostByPostId(int post_id)
     {
 
-        if (post_id == 1)
-        {
+        if (post_id == 1) {
             return new Posts();
-        } else
-        {
+        } else {
             return null;
         }
     }

@@ -21,8 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith ( SpringJUnit4ClassRunner.class )
-@ContextConfiguration ( "file:src/main/webapp/WEB-INF/applicationContext.xml" )
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/main/webapp/WEB-INF/applicationContext.xml")
 public class CommentServiceLayerTest
 {
 
@@ -48,8 +48,7 @@ public class CommentServiceLayerTest
         postcreate.title = "testposttitle";
         postcreate.content = "testpostcontent";
 
-        int postid = post_service.createPost(postcreate.set_post_data(token
-                .getUser()));
+        int postid = post_service.createPost(postcreate.set_post_data(token.getUser()));
         assertTrue(postid > 0);
         post = post_service.getPostByPostId(postid);
     }
@@ -78,19 +77,15 @@ public class CommentServiceLayerTest
         commentcreate.postid = post.getId();
         commentcreate.comment = "testcomment";
 
-        try
-        {
+        try {
             comment_service.createComment(new Comments());
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
         }
-        int commentid = comment_service.createComment(commentcreate
-                .set_comment_data(token.getUser(), post));
+        int commentid = comment_service.createComment(commentcreate.set_comment_data(
+                token.getUser(), post));
 
-        assertEquals(true,
-                comment_service.checkCommentOwn(commentid, token.getUserId()));
-        assertEquals(false, comment_service.checkCommentOwn(commentid,
-                token.getUserId() + 1));
+        assertEquals(true, comment_service.checkCommentOwn(commentid, token.getUserId()));
+        assertEquals(false, comment_service.checkCommentOwn(commentid, token.getUserId() + 1));
 
         CommentEditForm commentedit = new CommentEditForm();
         commentedit.id = commentid;
@@ -112,15 +107,13 @@ public class CommentServiceLayerTest
         CommentCreateForm commentcreate = new CommentCreateForm();
         commentcreate.postid = post.getId();
         commentcreate.comment = "testcomment";
-        int commentid = comment_service.createComment(commentcreate
-                .set_comment_data(token.getUser(), post));
+        int commentid = comment_service.createComment(commentcreate.set_comment_data(
+                token.getUser(), post));
 
-        int commentlist = comment_service.getAllCommentByPostId(post.getId())
-                .size();
+        int commentlist = comment_service.getAllCommentByPostId(post.getId()).size();
         assertTrue(commentlist > 0);
 
-        commentlist = comment_service.getAllCommentByUserId(token.getUserId())
-                .size();
+        commentlist = comment_service.getAllCommentByUserId(token.getUserId()).size();
         assertTrue(commentlist > 0);
 
         Comments comment = comment_service.getCommentById(commentid);

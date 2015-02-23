@@ -16,8 +16,7 @@ public class TokenServiceTest implements TokenServiceInterface
 
         Users user = new Users();
         Token token = new Token();
-        switch (access_token)
-        {
+        switch (access_token) {
         case "token2008":
             return null;
         case "logout2005":

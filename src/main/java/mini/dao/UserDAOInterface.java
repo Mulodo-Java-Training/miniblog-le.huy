@@ -6,9 +6,7 @@ import mini.model.Users;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public interface UserDAOInterface
 {
 
@@ -21,7 +19,7 @@ public interface UserDAOInterface
     // public void saveOrUpdate(Users user);
 
     public void delete(Users user);
-    
+
     public void delete(String username);
 
     public Users get(int id);
@@ -36,7 +34,7 @@ public interface UserDAOInterface
 
     public Users getUserByEmail(String email);
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List searchUserByUsername(String query);
 
     /*

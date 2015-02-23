@@ -6,9 +6,7 @@ import mini.model.Comments;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public interface CommentDAOInterface
 {
 

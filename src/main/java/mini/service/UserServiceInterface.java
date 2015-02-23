@@ -10,9 +10,7 @@ import mini.model.Users;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public interface UserServiceInterface
 {
 
@@ -23,7 +21,7 @@ public interface UserServiceInterface
     public Users getUserByUsername(String username);
 
     public boolean deleteUser(String username);
-    
+
     public boolean insertUser(Users user);
 
     public Token loginUser(UserLoginForm data);
@@ -36,6 +34,6 @@ public interface UserServiceInterface
 
     public Token changePassword(UserChangePasswordForm data, int user_id);
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List searchUserByUsername(String query);
 }

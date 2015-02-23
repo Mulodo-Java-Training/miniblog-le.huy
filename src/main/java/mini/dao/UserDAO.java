@@ -13,9 +13,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Repository
 public class UserDAO implements UserDAOInterface
 {
@@ -57,13 +55,12 @@ public class UserDAO implements UserDAOInterface
 
         session.getCurrentSession().delete(user);
     }
-    
+
     @Override
     public void delete(String username)
     {
-        session.getCurrentSession()
-        .createQuery("DELETE FROM Users " + "WHERE username=:username")
-        .setParameter("username", username).executeUpdate();
+        session.getCurrentSession().createQuery("DELETE FROM Users " + "WHERE username=:username")
+                .setParameter("username", username).executeUpdate();
     }
 
     @Override
@@ -100,8 +97,7 @@ public class UserDAO implements UserDAOInterface
     public Users getUserByUsername(String username)
     {
 
-        Criteria criteria = session.getCurrentSession().createCriteria(
-                Users.class);
+        Criteria criteria = session.getCurrentSession().createCriteria(Users.class);
         criteria.add(Restrictions.eq("username", username));
         return (Users) criteria.uniqueResult();
     }
@@ -110,13 +106,12 @@ public class UserDAO implements UserDAOInterface
     public Users getUserByEmail(String email)
     {
 
-        Criteria criteria = session.getCurrentSession().createCriteria(
-                Users.class);
+        Criteria criteria = session.getCurrentSession().createCriteria(Users.class);
         criteria.add(Restrictions.eq("email", email));
         return (Users) criteria.uniqueResult();
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     public List searchUserByUsername(String query)
     {

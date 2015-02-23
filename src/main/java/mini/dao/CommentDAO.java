@@ -10,9 +10,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Repository
 public class CommentDAO implements CommentDAOInterface
 {
@@ -69,29 +67,23 @@ public class CommentDAO implements CommentDAOInterface
     // return (Comments) session.getCurrentSession().load(Comments.class, id);
     // }
 
-    @SuppressWarnings ( "unchecked" )
+    @SuppressWarnings("unchecked")
     @Override
     public List<Comments> getAllCommentsByUserId(int user_id)
     {
 
-        return session
-                .getCurrentSession()
-                .createQuery(
-                        "FROM Comments comment "
-                                + "WHERE comment.user.id=:user_id")
+        return session.getCurrentSession()
+                .createQuery("FROM Comments comment " + "WHERE comment.user.id=:user_id")
                 .setParameter("user_id", user_id).list();
     }
 
-    @SuppressWarnings ( "unchecked" )
+    @SuppressWarnings("unchecked")
     @Override
     public List<Comments> getAllCommentsByPostId(int post_id)
     {
 
-        return session
-                .getCurrentSession()
-                .createQuery(
-                        "FROM Comments comment "
-                                + "WHERE comment.post.id=:post_id")
+        return session.getCurrentSession()
+                .createQuery("FROM Comments comment " + "WHERE comment.post.id=:post_id")
                 .setParameter("post_id", post_id).list();
     }
 

@@ -22,33 +22,31 @@ import org.hibernate.annotations.ForeignKey;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Entity
-@Table ( name = "comments" )
+@Table(name = "comments")
 public class Comments
 {
 
     @Id
-    @Column ( columnDefinition = "INT(20) UNSIGNED" , nullable = false )
-    @GeneratedValue ( strategy = GenerationType.AUTO )
+    @Column(columnDefinition = "INT(20) UNSIGNED", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     // for autonumber
     private int id;
 
-    @Column ( columnDefinition = "VARCHAR(254)" , nullable = false )
+    @Column(columnDefinition = "VARCHAR(254)", nullable = false)
     private String comment;
 
-    @Column ( columnDefinition = "TIMESTAMP(0)" )
-    @Temporal ( TemporalType.TIMESTAMP )
+    @Column(columnDefinition = "TIMESTAMP(0)")
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonIgnore
     private Date create_at;
 
     @Transient
     private String Create_At;
 
-    @Column ( columnDefinition = "TIMESTAMP(0)" )
-    @Temporal ( TemporalType.TIMESTAMP )
+    @Column(columnDefinition = "TIMESTAMP(0)")
+    @Temporal(TemporalType.TIMESTAMP)
     @JsonIgnore
     private Date modified_at;
 
@@ -56,8 +54,8 @@ public class Comments
     private String Modified_At;
 
     @ManyToOne
-    @JoinColumn ( nullable = false )
-    @ForeignKey ( name = "fk_comments_users" )
+    @JoinColumn(nullable = false)
+    @ForeignKey(name = "fk_comments_users")
     @JsonIgnore
     private Users user;
 
@@ -65,16 +63,15 @@ public class Comments
     private int userId;
 
     @ManyToOne
-    @JoinColumn ( nullable = false )
-    @ForeignKey ( name = "fk_comments_posts" )
+    @JoinColumn(nullable = false)
+    @ForeignKey(name = "fk_comments_posts")
     @JsonIgnore
     private Posts post;
 
     @Transient
     private int postId;
 
-    public Comments()
-    {
+    public Comments() {
 
     }
 
@@ -189,8 +186,7 @@ public class Comments
     public String getModified_At()
     {
 
-        return new SimpleDateFormat(SystemValue.DATE_FORMAT)
-                .format(modified_at);
+        return new SimpleDateFormat(SystemValue.DATE_FORMAT).format(modified_at);
     }
 
     public void setModified_At(String modified_At)

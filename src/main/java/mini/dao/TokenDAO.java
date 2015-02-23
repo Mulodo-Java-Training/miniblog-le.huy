@@ -8,9 +8,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Repository
 public class TokenDAO implements TokenDAOInterface
 {
@@ -71,11 +69,8 @@ public class TokenDAO implements TokenDAOInterface
     public Token getTokenByAccessToken(String access_token)
     {
 
-        return (Token) session
-                .getCurrentSession()
-                .createQuery(
-                        "FROM Token token "
-                                + "WHERE token.access_token =:access_token")
+        return (Token) session.getCurrentSession()
+                .createQuery("FROM Token token " + "WHERE token.access_token =:access_token")
                 .setParameter("access_token", access_token).uniqueResult();
 
     }
@@ -97,8 +92,7 @@ public class TokenDAO implements TokenDAOInterface
     public void clearTokenByUserId(int user_id)
     {
 
-        session.getCurrentSession()
-                .createQuery("DELETE FROM Token " + "WHERE user_id=:user_id")
+        session.getCurrentSession().createQuery("DELETE FROM Token " + "WHERE user_id=:user_id")
                 .setParameter("user_id", user_id).executeUpdate();
     }
 

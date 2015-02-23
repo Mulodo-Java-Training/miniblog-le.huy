@@ -18,9 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Service
 public class UserService implements UserServiceInterface
 {
@@ -39,16 +37,13 @@ public class UserService implements UserServiceInterface
     public boolean checkUserExist(String username)
     {
 
-        try
-        {
+        try {
             if (user_DAO.getUserByUsername(username) != null)
                 return true;
-            else
-            {
+            else {
                 return false;
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -59,17 +54,13 @@ public class UserService implements UserServiceInterface
     public boolean checkEmailExist(String email)
     {
 
-        try
-        {
-            if (user_DAO.getUserByEmail(email) != null)
-            {
+        try {
+            if (user_DAO.getUserByEmail(email) != null) {
                 return true;
-            } else
-            {
+            } else {
                 return false;
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -80,12 +71,10 @@ public class UserService implements UserServiceInterface
     public boolean insertUser(Users user)
     {
 
-        try
-        {
+        try {
             user_DAO.save(user);
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -97,22 +86,17 @@ public class UserService implements UserServiceInterface
     {
 
         Users user;
-        try
-        {
+        try {
             user = user_DAO.getUserByUsername(data.username);
 
             if (user == null
-                    || user.getPassword().compareTo(
-                            HashGenUtil.Encrypt_password(data.password)) != 0)
-            {
+                    || user.getPassword().compareTo(HashGenUtil.Encrypt_password(data.password)) != 0) {
                 return null;
-            } else
-            {
+            } else {
 
                 return token_service.createToken(user);
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -123,12 +107,10 @@ public class UserService implements UserServiceInterface
     public boolean logoutUser(Token token)
     {
 
-        try
-        {
+        try {
             token_DAO.delete(token);
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -139,25 +121,20 @@ public class UserService implements UserServiceInterface
     public boolean updateUserInfo(UserUpdateForm data, int user_id)
     {
 
-        try
-        {
+        try {
             Users user = user_DAO.get(user_id);
 
             if (user == null
-                    || user.getPassword().compareTo(
-                            HashGenUtil.Encrypt_password(data.password)) != 0)
-            {
+                    || user.getPassword().compareTo(HashGenUtil.Encrypt_password(data.password)) != 0) {
                 return false;
-            } else
-            {
+            } else {
                 user.setFirstname(data.firstname);
                 user.setLastname(data.lastname);
                 user.setModified_at(Calendar.getInstance().getTime());
                 user_DAO.update(user);
                 return true;
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -168,11 +145,9 @@ public class UserService implements UserServiceInterface
     public Users getUserById(int id)
     {
 
-        try
-        {
+        try {
             return user_DAO.get(id);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -183,36 +158,30 @@ public class UserService implements UserServiceInterface
     public Token changePassword(UserChangePasswordForm data, int user_id)
     {
 
-        try
-        {
+        try {
             Users user = user_DAO.get(user_id);
-            if (user.getPassword().compareTo(
-                    HashGenUtil.Encrypt_password(data.old_password)) != 0)
-            {
+            if (user.getPassword().compareTo(HashGenUtil.Encrypt_password(data.old_password)) != 0) {
                 return null;
             }
             user.setPassword(HashGenUtil.Encrypt_password(data.new_password));
             token_service.clearTokenTalbeByUserId(user.getId());
             user_DAO.update(user);
             return token_service.createToken(user);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     @Transactional
     public List searchUserByUsername(String query)
     {
 
-        try
-        {
+        try {
             return user_DAO.searchUserByUsername(query);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -223,16 +192,13 @@ public class UserService implements UserServiceInterface
     public boolean deleteUser(String username)
     {
 
-        try
-        {
+        try {
             Users user = user_DAO.getUserByUsername(username);
-            if (user != null)
-            {
+            if (user != null) {
                 user_DAO.delete(user);
             }
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -243,11 +209,9 @@ public class UserService implements UserServiceInterface
     public Users getUserByUsername(String username)
     {
 
-        try
-        {
+        try {
             return user_DAO.getUserByUsername(username);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

@@ -5,9 +5,7 @@ import java.util.List;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public class SystemValue
 {
 
@@ -38,9 +36,8 @@ public class SystemValue
 
     public final static String USER_GET_MODE_ID = "id";
 
-    @SuppressWarnings ( "serial" )
-    public final static List<String> USER_GET_MODE = new ArrayList<String>()
-    {
+    @SuppressWarnings("serial")
+    public final static List<String> USER_GET_MODE = new ArrayList<String>() {
 
         {
             add(USER_GET_MODE_CURRENT);
@@ -60,9 +57,8 @@ public class SystemValue
 
     public final static String POST_GET_MODE_TITLE = "title";
 
-    @SuppressWarnings ( "serial" )
-    public final static List<String> POST_GET_MODE = new ArrayList<String>()
-    {
+    @SuppressWarnings("serial")
+    public final static List<String> POST_GET_MODE = new ArrayList<String>() {
 
         {
             add(POST_GET_MODE_CURRENT);
@@ -82,9 +78,8 @@ public class SystemValue
 
     public final static String COMMENT_GET_MODE_POSTID = "postid";
 
-    @SuppressWarnings ( "serial" )
-    public final static List<String> COMMENT_GET_MODE = new ArrayList<String>()
-    {
+    @SuppressWarnings("serial")
+    public final static List<String> COMMENT_GET_MODE = new ArrayList<String>() {
 
         {
             add(COMMENT_GET_MODE_CURRENT);

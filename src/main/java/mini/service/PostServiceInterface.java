@@ -7,9 +7,7 @@ import mini.model.Posts;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public interface PostServiceInterface
 {
 
@@ -23,17 +21,17 @@ public interface PostServiceInterface
 
     public boolean deletePost(PostEditForm data);
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List getAllPost();
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List getAllPostByUserId(int user_id);
 
     public Posts getPostByPostId(int post_id);
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List getTopPost(int limit);
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List searchPostByTitle(String keysearch);
 }

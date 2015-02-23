@@ -13,9 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Service
 public class CommentService implements CommentServiceInterface
 {
@@ -28,11 +26,9 @@ public class CommentService implements CommentServiceInterface
     public int createComment(Comments data)
     {
 
-        try
-        {
+        try {
             return comment_DAO.save(data);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return 0;
         }
@@ -43,16 +39,13 @@ public class CommentService implements CommentServiceInterface
     public boolean checkCommentOwn(int comment_id, int user_id)
     {
 
-        try
-        {
+        try {
             Comments comment = comment_DAO.get(comment_id);
-            if (comment.getUser().getId() != user_id)
-            {
+            if (comment.getUser().getId() != user_id) {
                 return false;
             }
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -63,15 +56,13 @@ public class CommentService implements CommentServiceInterface
     public boolean editComment(CommentEditForm data)
     {
 
-        try
-        {
+        try {
             Comments comment = comment_DAO.get(data.id);
             comment.setComment(data.comment);
             comment.setModified_at(Calendar.getInstance().getTime());
             comment_DAO.update(comment);
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -82,13 +73,11 @@ public class CommentService implements CommentServiceInterface
     public boolean deleteComment(CommentEditForm data)
     {
 
-        try
-        {
+        try {
             Comments comment = comment_DAO.get(data.id);
             comment_DAO.delete(comment);
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -99,43 +88,37 @@ public class CommentService implements CommentServiceInterface
     public Comments getCommentById(int comment_id)
     {
 
-        try
-        {
+        try {
             return comment_DAO.get(comment_id);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     @Transactional
     public List getAllCommentByUserId(int user_id)
     {
 
-        try
-        {
+        try {
             return comment_DAO.getAllCommentsByUserId(user_id);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     @Transactional
     public List getAllCommentByPostId(int post_id)
     {
 
-        try
-        {
+        try {
             return comment_DAO.getAllCommentsByPostId(post_id);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

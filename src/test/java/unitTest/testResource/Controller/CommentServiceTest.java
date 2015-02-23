@@ -16,11 +16,9 @@ public class CommentServiceTest implements CommentServiceInterface
     public int createComment(Comments data)
     {
 
-        if (data.getComment() == "comment200")
-        {
+        if (data.getComment() == "comment200") {
             return 1;
-        } else
-        {
+        } else {
             return 0;
         }
     }
@@ -29,11 +27,9 @@ public class CommentServiceTest implements CommentServiceInterface
     public boolean checkCommentOwn(int comment_id, int user_id)
     {
 
-        if (comment_id == 1)
-        {
+        if (comment_id == 1) {
             return false;
-        } else
-        {
+        } else {
             return true;
         }
     }
@@ -42,11 +38,9 @@ public class CommentServiceTest implements CommentServiceInterface
     public boolean editComment(CommentEditForm data)
     {
 
-        if (data.id == 3)
-        {
+        if (data.id == 3) {
             return true;
-        } else
-        {
+        } else {
             return false;
         }
     }
@@ -55,11 +49,9 @@ public class CommentServiceTest implements CommentServiceInterface
     public boolean deleteComment(CommentEditForm data)
     {
 
-        if (data.id == 3)
-        {
+        if (data.id == 3) {
             return true;
-        } else
-        {
+        } else {
             return false;
         }
     }
@@ -69,11 +61,9 @@ public class CommentServiceTest implements CommentServiceInterface
     {
 
         Comments comment = new Comments();
-        if (comment_id == 1)
-        {
+        if (comment_id == 1) {
             return comment;
-        } else
-        {
+        } else {
             return null;
         }
     }

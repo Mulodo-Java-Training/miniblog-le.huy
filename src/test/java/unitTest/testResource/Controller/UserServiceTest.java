@@ -20,8 +20,7 @@ public class UserServiceTest implements UserServiceInterface
     public boolean checkUserExist(String username)
     {
 
-        switch (username)
-        {
+        switch (username) {
         case "createuser2001":
             return true;
         }
@@ -32,8 +31,7 @@ public class UserServiceTest implements UserServiceInterface
     public boolean checkEmailExist(String email)
     {
 
-        switch (email)
-        {
+        switch (email) {
         case "createuser2002":
             return true;
         }
@@ -60,8 +58,7 @@ public class UserServiceTest implements UserServiceInterface
     public boolean insertUser(Users user)
     {
 
-        switch (user.getUsername())
-        {
+        switch (user.getUsername()) {
         case "createuser2003":
             return false;
         }
@@ -73,8 +70,7 @@ public class UserServiceTest implements UserServiceInterface
     {
 
         Token token = new Token();
-        switch (data.username)
-        {
+        switch (data.username) {
         case "login200":
             token.setAccess_token("login200");
             break;
@@ -90,8 +86,7 @@ public class UserServiceTest implements UserServiceInterface
     public boolean logoutUser(Token token)
     {
 
-        switch (token.getAccess_token())
-        {
+        switch (token.getAccess_token()) {
         case "logout2005":
             return false;
         }
@@ -102,8 +97,7 @@ public class UserServiceTest implements UserServiceInterface
     public boolean updateUserInfo(UserUpdateForm data, int user_id)
     {
 
-        switch (data.firstname)
-        {
+        switch (data.firstname) {
         case "updateuser2006":
             return false;
         }
@@ -115,8 +109,7 @@ public class UserServiceTest implements UserServiceInterface
     {
 
         Users user = new Users();
-        if (id == 1)
-        {
+        if (id == 1) {
             user.setUsername("getuser200");
             user.setId(1);
             user.setCreate_at(new Date());
@@ -140,12 +133,10 @@ public class UserServiceTest implements UserServiceInterface
 
         Token token = new Token();
 
-        if (data.new_password == "passuser2007")
-        {
+        if (data.new_password == "passuser2007") {
             return null;
         }
-        if (data.new_password == "passuser200")
-        {
+        if (data.new_password == "passuser200") {
             token.setAccess_token("passuser200");
         }
         return token;

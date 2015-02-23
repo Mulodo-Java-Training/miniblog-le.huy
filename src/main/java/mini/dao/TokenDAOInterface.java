@@ -4,9 +4,7 @@ import mini.model.Token;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public interface TokenDAOInterface
 {
 

@@ -18,8 +18,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith ( SpringJUnit4ClassRunner.class )
-@ContextConfiguration ( "file:src/main/webapp/WEB-INF/applicationContext.xml" )
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/main/webapp/WEB-INF/applicationContext.xml")
 public class PostServiceLayerTest
 {
 
@@ -55,20 +55,16 @@ public class PostServiceLayerTest
         PostCreateForm postcreate = new PostCreateForm();
         postcreate.title = "testposttitle";
         postcreate.content = "testpostcontent";
-        try
-        {
+        try {
             post_service.createPost(new Posts());
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
         }
-        int postid = post_service.createPost(postcreate.set_post_data(token
-                .getUser()));
+        int postid = post_service.createPost(postcreate.set_post_data(token.getUser()));
         assertTrue(postid > 0);
 
         assertEquals(true, post_service.checkPostOwn(postid, token.getUserId()));
         assertEquals(false, post_service.checkPostOwn(5, token.getUserId()));
-        assertEquals(false,
-                post_service.checkPostOwn(postid + 1, token.getUserId()));
+        assertEquals(false, post_service.checkPostOwn(postid + 1, token.getUserId()));
 
         PostEditForm postedit = new PostEditForm();
         postedit.title = "testposttitle2";
@@ -94,8 +90,7 @@ public class PostServiceLayerTest
         postcreate.title = "testposttitle";
         postcreate.content = "testpostcontent";
 
-        int postid = post_service.createPost(postcreate.set_post_data(token
-                .getUser()));
+        int postid = post_service.createPost(postcreate.set_post_data(token.getUser()));
         assertTrue(postid > 0);
 
         int postlist = post_service.getAllPost().size();

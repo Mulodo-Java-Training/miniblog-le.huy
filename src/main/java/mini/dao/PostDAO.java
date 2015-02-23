@@ -11,9 +11,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Repository
 public class PostDAO implements PostDAOInterface
 {
@@ -70,7 +68,7 @@ public class PostDAO implements PostDAOInterface
     // return (Posts) session.getCurrentSession().load(Posts.class, id);
     // }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     public List getAllPostsByUserId(int user_id)
     {
@@ -83,13 +81,12 @@ public class PostDAO implements PostDAOInterface
                                 + "post.status as status,"
                                 + "CONCAT(date(post.create_at),' ',time(post.create_at)) as create_at,"
                                 + "CONCAT(date(post.modified_at),' ',time(post.modified_at)) as modified_at "
-                                + "FROM Posts post "
-                                + "WHERE post.user.id =:user_id")
+                                + "FROM Posts post " + "WHERE post.user.id =:user_id")
                 .setParameter("user_id", user_id)
                 .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP).list();
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     public List getAllPosts()
     {
@@ -106,7 +103,7 @@ public class PostDAO implements PostDAOInterface
                 .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP).list();
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     public List searchPostsByCreateAt(int limit)
     {
@@ -119,13 +116,11 @@ public class PostDAO implements PostDAOInterface
                                 + "post.status as status,"
                                 + "CONCAT(date(post.create_at),' ',time(post.create_at)) as create_at,"
                                 + "CONCAT(date(post.modified_at),' ',time(post.modified_at)) as modified_at "
-                                + "FROM Posts post "
-                                + "ORDER BY post.create_at DESC")
-                .setMaxResults(limit)
-                .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP).list();
+                                + "FROM Posts post " + "ORDER BY post.create_at DESC")
+                .setMaxResults(limit).setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP).list();
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     public List searchPostsByTitle(String keysearch)
     {
@@ -139,8 +134,7 @@ public class PostDAO implements PostDAOInterface
                                 + "post.status as status,"
                                 + "CONCAT(date(post.create_at),' ',time(post.create_at)) as create_at,"
                                 + "CONCAT(date(post.modified_at),' ',time(post.modified_at)) as modified_at "
-                                + "FROM Posts post "
-                                + "WHERE post.title LIKE :keysearch")
+                                + "FROM Posts post " + "WHERE post.title LIKE :keysearch")
                 .setParameter("keysearch", "%" + keysearch + "%")
                 .setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP).list();
     }

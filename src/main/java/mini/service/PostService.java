@@ -14,9 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Service
 public class PostService implements PostServiceInterface
 {
@@ -32,11 +30,9 @@ public class PostService implements PostServiceInterface
     public int createPost(Posts data)
     {
 
-        try
-        {
+        try {
             return post_DAO.save(data);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return 0;
         }
@@ -47,16 +43,13 @@ public class PostService implements PostServiceInterface
     public boolean checkPostOwn(int post_id, int user_id)
     {
 
-        try
-        {
+        try {
             Posts post = post_DAO.get(post_id);
-            if (post.getUser().getId() != user_id)
-            {
+            if (post.getUser().getId() != user_id) {
                 return false;
             }
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -67,16 +60,14 @@ public class PostService implements PostServiceInterface
     public boolean editPost(PostEditForm data)
     {
 
-        try
-        {
+        try {
             Posts post = post_DAO.get(data.id);
             post.setTitle(data.title);
             post.setContent(data.content);
             post.setModified_at(Calendar.getInstance().getTime());
             post_DAO.update(post);
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -87,15 +78,13 @@ public class PostService implements PostServiceInterface
     public boolean editStatusPost(PostEditForm data)
     {
 
-        try
-        {
+        try {
             Posts post = post_DAO.get(data.id);
             post.setStatus(data.status);
             post.setModified_at(Calendar.getInstance().getTime());
             post_DAO.update(post);
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
@@ -106,45 +95,39 @@ public class PostService implements PostServiceInterface
     public boolean deletePost(PostEditForm data)
     {
 
-        try
-        {
+        try {
             Posts post = post_DAO.get(data.id);
             post_DAO.delete(post);
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     @Transactional
     public List getAllPost()
     {
 
-        try
-        {
+        try {
             return post_DAO.getAllPosts();
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     @Transactional
     public List getAllPostByUserId(int user_id)
     {
 
-        try
-        {
+        try {
             return post_DAO.getAllPostsByUserId(user_id);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -155,43 +138,37 @@ public class PostService implements PostServiceInterface
     public Posts getPostByPostId(int post_id)
     {
 
-        try
-        {
+        try {
             return post_DAO.get(post_id);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     @Transactional
     public List getTopPost(int limit)
     {
 
-        try
-        {
+        try {
             return post_DAO.searchPostsByCreateAt(limit);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     @Override
     @Transactional
     public List searchPostByTitle(String keysearch)
     {
 
-        try
-        {
+        try {
             return post_DAO.searchPostsByTitle(keysearch);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }

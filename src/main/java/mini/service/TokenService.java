@@ -16,9 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 @Service
 public class TokenService implements TokenServiceInterface
 {
@@ -35,16 +33,11 @@ public class TokenService implements TokenServiceInterface
     {
 
         String access_token = null;
-        while (access_token == null)
-        {
-            try
-            {
-                access_token = HashGenUtil
-                        .generateSHA256(SystemValue.SECRET_KEY + "@"
-                                + user.getId() + "@"
-                                + Calendar.getInstance().getTime());
-            } catch (Exception e)
-            {
+        while (access_token == null) {
+            try {
+                access_token = HashGenUtil.generateSHA256(SystemValue.SECRET_KEY + "@"
+                        + user.getId() + "@" + Calendar.getInstance().getTime());
+            } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("hash error");
             }
@@ -62,11 +55,9 @@ public class TokenService implements TokenServiceInterface
         token.setExpired(cal.getTime());
 
         user.getUser_token().add(token);
-        try
-        {
+        try {
             user_DAO.save(user);
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -78,20 +69,16 @@ public class TokenService implements TokenServiceInterface
     public Token checkAccessToken(String access_token)
     {
 
-        try
-        {
+        try {
             Token token = token_DAO.getTokenByAccessToken(access_token);
-            if (token == null)
-            {
+            if (token == null) {
                 return null;
             }
 
-            if (checkExpireTime(token.getExpired()) >= 0)
-            {
+            if (checkExpireTime(token.getExpired()) >= 0) {
                 token_DAO.delete(token);
                 return null;
-            } else
-            {
+            } else {
                 Calendar cal = Calendar.getInstance();
                 cal.setTime(new Date());
                 cal.add(Calendar.HOUR_OF_DAY, SystemValue.TOKEN_EXPIRE_TIME);
@@ -100,8 +87,7 @@ public class TokenService implements TokenServiceInterface
                 token_DAO.update(token);
                 return token;
             }
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -120,12 +106,10 @@ public class TokenService implements TokenServiceInterface
     public boolean clearTokenTalbeByUserId(int user_id)
     {
 
-        try
-        {
+        try {
             token_DAO.clearTokenByUserId(user_id);
             return true;
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }

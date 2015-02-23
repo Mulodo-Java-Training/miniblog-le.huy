@@ -2,9 +2,7 @@ package mini.util;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public class ReturnObject
 {
 

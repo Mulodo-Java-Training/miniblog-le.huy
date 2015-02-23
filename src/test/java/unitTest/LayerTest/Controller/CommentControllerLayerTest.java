@@ -15,8 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith ( SpringJUnit4ClassRunner.class )
-@ContextConfiguration ( "file:src/test/java/TestControllerContext.xml" )
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/test/java/TestControllerContext.xml")
 public class CommentControllerLayerTest
 {
 
@@ -37,8 +37,7 @@ public class CommentControllerLayerTest
 
         CommentCreateForm commentcreateform = new CommentCreateForm();
         commentcreateform.postid = 0;
-        Response respone = comment_controller.createComment("validtoken",
-                commentcreateform);
+        Response respone = comment_controller.createComment("validtoken", commentcreateform);
         assertEquals(SystemValue.ERRORCODE_3005, respone.getStatus());
     }
 
@@ -48,8 +47,7 @@ public class CommentControllerLayerTest
 
         CommentCreateForm commentcreateform = new CommentCreateForm();
         commentcreateform.postid = 1;
-        Response respone = comment_controller.createComment("validtoken",
-                commentcreateform);
+        Response respone = comment_controller.createComment("validtoken", commentcreateform);
         assertEquals(SystemValue.ERRORCODE_4001, respone.getStatus());
     }
 
@@ -60,8 +58,7 @@ public class CommentControllerLayerTest
         CommentCreateForm commentcreateform = new CommentCreateForm();
         commentcreateform.comment = "comment200";
         commentcreateform.postid = 1;
-        Response respone = comment_controller.createComment("validtoken",
-                commentcreateform);
+        Response respone = comment_controller.createComment("validtoken", commentcreateform);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -79,8 +76,7 @@ public class CommentControllerLayerTest
 
         CommentEditForm commenteditform = new CommentEditForm();
         commenteditform.id = 1;
-        Response respone = comment_controller.editComment("validtoken",
-                commenteditform);
+        Response respone = comment_controller.editComment("validtoken", commenteditform);
         assertEquals(SystemValue.ERRORCODE_4004, respone.getStatus());
     }
 
@@ -90,8 +86,7 @@ public class CommentControllerLayerTest
 
         CommentEditForm commenteditform = new CommentEditForm();
         commenteditform.id = 2;
-        Response respone = comment_controller.editComment("validtoken",
-                commenteditform);
+        Response respone = comment_controller.editComment("validtoken", commenteditform);
         assertEquals(SystemValue.ERRORCODE_4002, respone.getStatus());
     }
 
@@ -101,8 +96,7 @@ public class CommentControllerLayerTest
 
         CommentEditForm commenteditform = new CommentEditForm();
         commenteditform.id = 3;
-        Response respone = comment_controller.editComment("validtoken",
-                commenteditform);
+        Response respone = comment_controller.editComment("validtoken", commenteditform);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -120,8 +114,7 @@ public class CommentControllerLayerTest
 
         CommentEditForm commenteditform = new CommentEditForm();
         commenteditform.id = 1;
-        Response respone = comment_controller.deleteComment("validtoken",
-                commenteditform);
+        Response respone = comment_controller.deleteComment("validtoken", commenteditform);
         assertEquals(SystemValue.ERRORCODE_4004, respone.getStatus());
     }
 
@@ -131,8 +124,7 @@ public class CommentControllerLayerTest
 
         CommentEditForm commenteditform = new CommentEditForm();
         commenteditform.id = 2;
-        Response respone = comment_controller.deleteComment("validtoken",
-                commenteditform);
+        Response respone = comment_controller.deleteComment("validtoken", commenteditform);
         assertEquals(SystemValue.ERRORCODE_4003, respone.getStatus());
     }
 
@@ -142,8 +134,7 @@ public class CommentControllerLayerTest
 
         CommentEditForm commenteditform = new CommentEditForm();
         commenteditform.id = 3;
-        Response respone = comment_controller.deleteComment("validtoken",
-                commenteditform);
+        Response respone = comment_controller.deleteComment("validtoken", commenteditform);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -151,8 +142,7 @@ public class CommentControllerLayerTest
     public void CommentController_getComment_1001()
     {
 
-        Response respone = comment_controller.getComment("validtoken",
-                "invalidmode", 0);
+        Response respone = comment_controller.getComment("validtoken", "invalidmode", 0);
         assertEquals(SystemValue.ERRORCODE_1001, respone.getStatus());
     }
 
@@ -184,8 +174,7 @@ public class CommentControllerLayerTest
     public void CommentController_getComment_getcurrent_2009()
     {
 
-        Response respone = comment_controller.getComment(
-                "getuser2009invalidid", "current", 2);
+        Response respone = comment_controller.getComment("getuser2009invalidid", "current", 2);
         assertEquals(SystemValue.ERRORCODE_2009, respone.getStatus());
     }
 
@@ -193,8 +182,7 @@ public class CommentControllerLayerTest
     public void CommentController_getComment_getcurrent_200()
     {
 
-        Response respone = comment_controller.getComment("validtoken",
-                "current", 2);
+        Response respone = comment_controller.getComment("validtoken", "current", 2);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -202,8 +190,7 @@ public class CommentControllerLayerTest
     public void CommentController_getComment_getpostid_3005()
     {
 
-        Response respone = comment_controller.getComment("validtoken",
-                "postid", 2);
+        Response respone = comment_controller.getComment("validtoken", "postid", 2);
         assertEquals(SystemValue.ERRORCODE_3005, respone.getStatus());
     }
 
@@ -211,8 +198,7 @@ public class CommentControllerLayerTest
     public void CommentController_getComment_getpostid_200()
     {
 
-        Response respone = comment_controller.getComment("validtoken",
-                "postid", 1);
+        Response respone = comment_controller.getComment("validtoken", "postid", 1);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -220,8 +206,7 @@ public class CommentControllerLayerTest
     public void CommentController_getComment_getuserid_2009()
     {
 
-        Response respone = comment_controller.getComment("getuser2009",
-                "userid", 2);
+        Response respone = comment_controller.getComment("getuser2009", "userid", 2);
         assertEquals(SystemValue.ERRORCODE_2009, respone.getStatus());
     }
 
@@ -229,8 +214,7 @@ public class CommentControllerLayerTest
     public void CommentController_getComment_getuserid_200()
     {
 
-        Response respone = comment_controller.getComment("validtoken",
-                "userid", 1);
+        Response respone = comment_controller.getComment("validtoken", "userid", 1);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 }

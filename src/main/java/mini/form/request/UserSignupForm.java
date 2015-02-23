@@ -14,35 +14,33 @@ import org.hibernate.validator.constraints.Email;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public class UserSignupForm
 {
 
     @NotNull
-    @Pattern ( regexp = SystemValue.USERNAME_STRING_RANGE )
-    @FormParam ( "username" )
+    @Pattern(regexp = SystemValue.USERNAME_STRING_RANGE)
+    @FormParam("username")
     public String username;
 
     @NotNull
-    @Pattern ( regexp = SystemValue.PASSWORD_STRING_RANGE )
-    @FormParam ( "password" )
+    @Pattern(regexp = SystemValue.PASSWORD_STRING_RANGE)
+    @FormParam("password")
     public String password;
 
     @NotNull
-    @Pattern ( regexp = SystemValue.FIRSTNAME_STRING_RANGE )
-    @FormParam ( "firstname" )
+    @Pattern(regexp = SystemValue.FIRSTNAME_STRING_RANGE)
+    @FormParam("firstname")
     public String firstname;
 
     @NotNull
-    @Pattern ( regexp = SystemValue.LASTNAME_STRING_RANGE )
-    @FormParam ( "lastname" )
+    @Pattern(regexp = SystemValue.LASTNAME_STRING_RANGE)
+    @FormParam("lastname")
     public String lastname;
 
     @NotNull
     @Email
-    @FormParam ( "email" )
+    @FormParam("email")
     public String email;
 
     public Users set_sign_up_data()

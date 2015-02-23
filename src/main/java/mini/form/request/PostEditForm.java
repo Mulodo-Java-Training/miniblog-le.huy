@@ -7,24 +7,22 @@ import mini.systemvalue.SystemValue;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public class PostEditForm
 {
 
-    @FormParam ( "id" )
+    @FormParam("id")
     public int id;
 
-    @Pattern ( regexp = SystemValue.POST_TITLE_STRING_RANGE )
-    @FormParam ( "title" )
+    @Pattern(regexp = SystemValue.POST_TITLE_STRING_RANGE)
+    @FormParam("title")
     public String title;
 
-    @Pattern ( regexp = SystemValue.POST_CONTENT_STRING_RANGE )
-    @FormParam ( "content" )
+    @Pattern(regexp = SystemValue.POST_CONTENT_STRING_RANGE)
+    @FormParam("content")
     public String content;
 
-    @FormParam ( "status" )
+    @FormParam("status")
     public boolean status;
 
 }

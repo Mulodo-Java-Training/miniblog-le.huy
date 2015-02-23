@@ -12,20 +12,18 @@ import mini.systemvalue.SystemValue;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public class PostCreateForm
 {
 
     @NotNull
-    @Pattern ( regexp = SystemValue.POST_TITLE_STRING_RANGE )
-    @FormParam ( "title" )
+    @Pattern(regexp = SystemValue.POST_TITLE_STRING_RANGE)
+    @FormParam("title")
     public String title;
 
     @NotNull
-    @Pattern ( regexp = SystemValue.POST_CONTENT_STRING_RANGE )
-    @FormParam ( "content" )
+    @Pattern(regexp = SystemValue.POST_CONTENT_STRING_RANGE)
+    @FormParam("content")
     public String content;
 
     public Posts set_post_data(Users user)

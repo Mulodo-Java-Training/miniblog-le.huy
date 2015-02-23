@@ -8,9 +8,7 @@ import mini.systemvalue.SystemValue;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public class HashGenUtil
 {
 
@@ -20,18 +18,15 @@ public class HashGenUtil
         return hashString(message, "SHA-256");
     }
 
-    private static String hashString(String message, String algorithm)
-            throws Exception
+    private static String hashString(String message, String algorithm) throws Exception
     {
 
-        try
-        {
+        try {
             MessageDigest digest = MessageDigest.getInstance(algorithm);
             byte[] hashedBytes = digest.digest(message.getBytes("UTF-8"));
 
             return convertByteArrayToHexString(hashedBytes);
-        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex)
-        {
+        } catch (NoSuchAlgorithmException | UnsupportedEncodingException ex) {
             throw new Exception("Could not generate hash from String", ex);
         }
     }
@@ -40,10 +35,8 @@ public class HashGenUtil
     {
 
         StringBuffer stringBuffer = new StringBuffer();
-        for (int i = 0; i < arrayBytes.length; i++)
-        {
-            stringBuffer.append(Integer.toString(
-                    (arrayBytes[i] & 0xff) + 0x100, 16).substring(1));
+        for (int i = 0; i < arrayBytes.length; i++) {
+            stringBuffer.append(Integer.toString((arrayBytes[i] & 0xff) + 0x100, 16).substring(1));
         }
         return stringBuffer.toString();
     }
@@ -51,12 +44,9 @@ public class HashGenUtil
     public static String Encrypt_password(String password)
     {
 
-        try
-        {
-            return HashGenUtil
-                    .generateSHA256(SystemValue.SECRET_KEY + password);
-        } catch (Exception e)
-        {
+        try {
+            return HashGenUtil.generateSHA256(SystemValue.SECRET_KEY + password);
+        } catch (Exception e) {
             e.printStackTrace();
             return password;
         }

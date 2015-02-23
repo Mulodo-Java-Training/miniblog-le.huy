@@ -4,9 +4,7 @@ import mini.systemvalue.SystemValue;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public class ErrorCodeUtil
 {
 
@@ -14,8 +12,7 @@ public class ErrorCodeUtil
     {
 
         ReturnObject resp = new ReturnObject();
-        switch (code)
-        {
+        switch (code) {
         case SystemValue.ERRORCODE_1001:
             resp.meta.code = SystemValue.ERRORCODE_1001;
             resp.meta.description = "Validate Data Error.";
@@ -110,8 +107,7 @@ public class ErrorCodeUtil
         return resp;
     }
 
-    public final static ReturnObject set_code(int code, String description,
-            Object data)
+    public final static ReturnObject set_code(int code, String description, Object data)
     {
 
         ReturnObject resp = new ReturnObject();

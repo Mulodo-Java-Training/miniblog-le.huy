@@ -17,8 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith ( SpringJUnit4ClassRunner.class )
-@ContextConfiguration ( "file:src/main/webapp/WEB-INF/applicationContext.xml" )
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/main/webapp/WEB-INF/applicationContext.xml")
 public class UserServiceLayerTest
 {
 
@@ -73,9 +73,9 @@ public class UserServiceLayerTest
         userupdate.firstname = "bla";
         userupdate.lastname = "blabla";
 
-        assertEquals(false,user_service.updateUserInfo(userupdate, token.getUserId()));
-        userupdate.password="testpass";
-        assertEquals(true,user_service.updateUserInfo(userupdate, token.getUserId()));
+        assertEquals(false, user_service.updateUserInfo(userupdate, token.getUserId()));
+        userupdate.password = "testpass";
+        assertEquals(true, user_service.updateUserInfo(userupdate, token.getUserId()));
         Users userup = user_service.getUserById(token.getUserId());
         assertEquals(userup.getFirstname(), "bla");
         assertEquals(userup.getLastname(), "blabla");
@@ -86,8 +86,7 @@ public class UserServiceLayerTest
         UserChangePasswordForm userpass = new UserChangePasswordForm();
         userpass.old_password = "testpassfalse";
         userpass.new_password = "testpassfalse";
-        assertEquals(null,
-                user_service.changePassword(userpass, token.getUserId()));
+        assertEquals(null, user_service.changePassword(userpass, token.getUserId()));
         userpass.old_password = "testpass";
         token = user_service.changePassword(userpass, token.getUserId());
         assertEquals(64, token.getAccess_token().length());
@@ -132,12 +131,10 @@ public class UserServiceLayerTest
         user.firstname = "le";
         user.lastname = "huy";
         user.password = "testpass";
-        try
-        {
+        try {
             assertEquals(false, user_service.insertUser(new Users()));
 
-        } catch (Exception e)
-        {
+        } catch (Exception e) {
         }
     }
 }

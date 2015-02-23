@@ -20,8 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith ( SpringJUnit4ClassRunner.class )
-@ContextConfiguration ( "file:src/test/java/TestControllerContext.xml" )
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("file:src/test/java/TestControllerContext.xml")
 public class UserControllerLayerTest
 {
 
@@ -132,8 +132,7 @@ public class UserControllerLayerTest
 
         UserUpdateForm updateform = new UserUpdateForm();
         updateform.firstname = "updateuser2006";
-        Response respone = user_controller.updateUser("updateuser2006",
-                updateform);
+        Response respone = user_controller.updateUser("updateuser2006", updateform);
         assertEquals(SystemValue.ERRORCODE_2006, respone.getStatus());
     }
 
@@ -143,8 +142,7 @@ public class UserControllerLayerTest
 
         UserUpdateForm updateform = new UserUpdateForm();
         updateform.firstname = "updateuser200";
-        Response respone = user_controller.updateUser("updateuser200",
-                updateform);
+        Response respone = user_controller.updateUser("updateuser200", updateform);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
     }
 
@@ -168,8 +166,7 @@ public class UserControllerLayerTest
     public void UserController_getUser_current_2009()
     {
 
-        Response respone = user_controller.getUserInfo("getuser2009",
-                "current", 1);
+        Response respone = user_controller.getUserInfo("getuser2009", "current", 1);
         assertEquals(SystemValue.ERRORCODE_2009, respone.getStatus());
     }
 
@@ -177,8 +174,7 @@ public class UserControllerLayerTest
     public void UserController_getUser_current_200()
     {
 
-        Response respone = user_controller.getUserInfo("getuser200", "current",
-                1);
+        Response respone = user_controller.getUserInfo("getuser200", "current", 1);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
         ReturnObject res = (ReturnObject) respone.getEntity();
         Users user = (Users) res.data;
@@ -209,8 +205,7 @@ public class UserControllerLayerTest
     {
 
         UserChangePasswordForm passform = new UserChangePasswordForm();
-        Response respone = user_controller.changeUserPassword("token2008",
-                passform);
+        Response respone = user_controller.changeUserPassword("token2008", passform);
         assertEquals(SystemValue.ERRORCODE_2008, respone.getStatus());
     }
 
@@ -220,8 +215,7 @@ public class UserControllerLayerTest
 
         UserChangePasswordForm passform = new UserChangePasswordForm();
         passform.new_password = "passuser2007";
-        Response respone = user_controller.changeUserPassword("passuser2007",
-                passform);
+        Response respone = user_controller.changeUserPassword("passuser2007", passform);
         assertEquals(SystemValue.ERRORCODE_2007, respone.getStatus());
     }
 
@@ -231,8 +225,7 @@ public class UserControllerLayerTest
 
         UserChangePasswordForm passform = new UserChangePasswordForm();
         passform.new_password = "passuser200";
-        Response respone = user_controller.changeUserPassword("passuser200",
-                passform);
+        Response respone = user_controller.changeUserPassword("passuser200", passform);
         assertEquals(SystemValue.CODE_200, respone.getStatus());
         ReturnObject res = (ReturnObject) respone.getEntity();
         Token token = (Token) res.data;
@@ -252,8 +245,7 @@ public class UserControllerLayerTest
     public void UserController_searchUser_200()
     {
 
-        Response respone = user_controller.searchUserByName("searchuser200",
-                "abc");
+        Response respone = user_controller.searchUserByName("searchuser200", "abc");
         assertEquals(SystemValue.CODE_200, respone.getStatus());
 
     }

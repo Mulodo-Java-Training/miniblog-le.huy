@@ -13,19 +13,17 @@ import mini.systemvalue.SystemValue;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public class CommentCreateForm
 {
 
     @NotNull
-    @FormParam ( "postid" )
+    @FormParam("postid")
     public int postid;
 
     @NotNull
-    @Pattern ( regexp = SystemValue.COMMENT_STRING_RANGE )
-    @FormParam ( "comment" )
+    @Pattern(regexp = SystemValue.COMMENT_STRING_RANGE)
+    @FormParam("comment")
     public String comment;
 
     public Comments set_comment_data(Users user, Posts post)

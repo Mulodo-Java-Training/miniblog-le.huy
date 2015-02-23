@@ -7,9 +7,7 @@ import mini.model.Comments;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public interface CommentServiceInterface
 {
 
@@ -23,10 +21,10 @@ public interface CommentServiceInterface
 
     public Comments getCommentById(int comment_id);
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List getAllCommentByUserId(int user_id);
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List getAllCommentByPostId(int post_id);
 
 }

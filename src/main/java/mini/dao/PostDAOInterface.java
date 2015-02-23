@@ -6,9 +6,7 @@ import mini.model.Posts;
 
 /**
  * @author Le Dang Huy
- *
  */
-
 public interface PostDAOInterface
 {
 
@@ -27,16 +25,16 @@ public interface PostDAOInterface
     // public Posts load(int id);
 
     // custom function
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List getAllPosts();
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List getAllPostsByUserId(int user_id);
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List searchPostsByCreateAt(int limit);
 
-    @SuppressWarnings ( "rawtypes" )
+    @SuppressWarnings("rawtypes")
     public List searchPostsByTitle(String keysearch);
 
     /*
