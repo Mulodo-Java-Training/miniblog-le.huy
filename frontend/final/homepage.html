@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<!ATTLIST p number CDATA #REQUIRED>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Blog Home - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="vendor/bloghome/css/blog-home.css" rel="stylesheet">
+    <link href="vendor/bloghome/css/style.css" rel="stylesheet">
+    
+    <link href="vendor/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+    
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="homepage.html" >MINIBLOGDEMO</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#" onclick="userinfo();">User Info</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="loadpostcurrentuser();">Your Posts</a>
+                    </li>
+                    <li>
+                        <a href="postedit.html">Create Post</a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="logout();">Log out</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container">
+
+        <div class="row">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-8">
+				
+				<h1 id="infoheader" class="page-header"></h1>
+                <div id= "pagecontent"></div>
+                
+
+                <!-- Pager -->
+<!--
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="#">&larr; Older</a>
+                    </li>
+                    <li class="next">
+                        <a href="#">Newer &rarr;</a>
+                    </li>
+                </ul>
+-->
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-4">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input id=searchquery type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" onclick="seacrh($('#searchquery').val());" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+							</button>
+                        </span>
+                    </div>
+                    
+                    <!-- /.input-group -->
+                </div>
+                
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Search Options</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <a href="#" data-type="select" id="searchoption" data-title="Select search option" ></a>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+
+            </div>
+
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    
+        
+    <script src="vendor/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+    
+    <!--config-->
+    <script src="api/config.js"></script>
+    
+    <!-- logout-->
+    <script src="api/logout.js"></script>
+    
+    <!-- userinfo-->
+    <script src="api/userinfo.js"></script>
+    
+    <!-- post-->
+    <script src="api/post.js"></script>
+    
+    <!-- search-->
+    <script src="api/search.js"></script>
+    
+
+<script type="text/javascript" >
+	$searchoption=1;
+	$(document).ready(toppost());
+	$('#searchoption').editable({
+        value: 1,
+        source: [
+            {value: 1, text: 'username'},
+            {value: 2, text: 'post title'}
+        ],
+        success: function(response, newValue){$searchoption=newValue;}  
+    }); 
+</script>
+</body>
+
+</html>
